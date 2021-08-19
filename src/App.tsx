@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import {Layout, Typography} from 'antd'
+import TodosList, {IProps} from './components/TodosList'
+import NewTodo from './components/NewTodo'
+import {TodosState} from './ts/index'
 
-function App() {
+const {Header, Content} = Layout
+
+const App: React.FC = () => {
+  const [state, setState] = useState<IProps>({
+    isEditing: false,
+    currentTodo: {} as TodosState,
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Layout className="layout">
+        <Header className="text-center">
+          <Typography.Text className="white-clr">
+            To add a todo, just fill the form below and click in add todo
+          </Typography.Text>
+        </Header>
+        <Content>
+          <NewTodo record={state} dispatchState={setState} />
+        </Content>
+      </Layout>
+      <TodosList dispatchState={setState} isEditing={state} />
+    </>
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,26 @@
+@import '~antd/dist/antd.css';
+
+.white-clr {
+  color: #fff;
+}
+
+.text-center,
+.content {
+  text-align: center;
+}
+
+.content {
+  margin: 2rem 0;
+}
+
+.container {
+  width: 100%;
+  margin: auto;
+  max-width: 700px;
+  padding: 2rem 0;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
